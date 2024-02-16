@@ -28,7 +28,7 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: backgroundColor, primaryColor: appBarColor),
       title: 'Whatsapp',
-      home: Loginscreen(),
+      home: Userinfo(),
       // const responvielayout(
       //     moblielayout: moblielayout(), weblayout: weblayout()),
       routes: {
