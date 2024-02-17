@@ -85,7 +85,8 @@ class _LoginscreenState extends ConsumerState<Loginscreen> {
                             focusedBorder: const UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.grey)),
                             hintText: "phone number",
-                            prefixStyle: TextStyle(fontWeight: FontWeight.bold),
+                            prefixStyle:
+                                const TextStyle(fontWeight: FontWeight.bold),
                             prefixText: (country != null)
                                 ? ("+${country!.phoneCode}  ")
                                 : null))),

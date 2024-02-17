@@ -13,9 +13,9 @@ class MoblieChatScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.video_call)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.call)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.video_call)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
         ],
         backgroundColor: appBarColor,
         title: Row(
@@ -43,11 +43,12 @@ class MoblieChatScreen extends StatelessWidget {
           )),
           child: Column(
             children: [
-              Expanded(child: chatlist()),
+              const Expanded(child: chatlist()),
               TextField(
                   decoration: inputdeco.copyWith(
                       prefixIcon: IconButton(
-                          onPressed: () {}, icon: Icon(Icons.emoji_emotions)),
+                          onPressed: () {},
+                          icon: const Icon(Icons.emoji_emotions)),
                       suffixIcon: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -56,13 +57,13 @@ class MoblieChatScreen extends StatelessWidget {
                           children: [
                             IconButton(
                                 onPressed: () {},
-                                icon: Icon(Icons.attach_file)),
+                                icon: const Icon(Icons.attach_file)),
                             IconButton(
-                                onPressed: () {}, icon: Icon(Icons.image))
+                                onPressed: () {}, icon: const Icon(Icons.image))
                           ],
                         ),
                       ),
-                      contentPadding: EdgeInsets.all(10))),
+                      contentPadding: const EdgeInsets.all(10))),
             ],
           )),
     );

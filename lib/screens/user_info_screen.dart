@@ -1,25 +1,36 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/features/common/widget/utilis/fliepicker.dart';
 import 'package:whatsapp/info.dart';
+import 'package:whatsapp/repository/controler.dart';
 
-class Userinfo extends StatefulWidget {
+class Userinfo extends ConsumerStatefulWidget {
   static String id = "/user_info_screen";
   const Userinfo({super.key});
 
   @override
-  State<Userinfo> createState() => _UserinfoState();
+  ConsumerState<Userinfo> createState() => _UserinfoState();
 }
 
-class _UserinfoState extends State<Userinfo> {
+class _UserinfoState extends ConsumerState<Userinfo> {
+  File? image;
+  TextEditingController nameeditingcontrolor = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    File? image;
     selectim() async {
-      setState(() async {
-        image = await pickimage(context);
-      });
+      image = await pickimage(context);
+      setState(() {});
+    }
+
+    savedatatofirebase() async {
+      String name = nameeditingcontrolor.text.trim();
+      if (name.isNotEmpty) {
+        await ref
+            .read(Authcontrollerprovder)
+            .storedatatofirebase(name, context, image);
+      }
     }
 
     return Scaffold(
@@ -47,20 +58,19 @@ class _UserinfoState extends State<Userinfo> {
                       child: IconButton(
                           onPressed: () {
                             selectim();
-                            print(
-                                "$image{}{}{}{{}{}{}{}}{{{..................}}{}}");
                           },
-                          icon: Icon(Icons.add_a_photo))),
+                          icon: const Icon(Icons.add_a_photo))),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 100),
+              padding: const EdgeInsets.symmetric(horizontal: 50),
               child: TextField(
                 decoration: InputDecoration(
                     hintText: "Enter your name ",
-                    suffixIcon:
-                        IconButton(onPressed: () {}, icon: Icon(Icons.done))),
+                    suffixIcon: IconButton(
+                        onPressed: savedatatofirebase,
+                        icon: const Icon(Icons.done))),
               ),
             )
           ],

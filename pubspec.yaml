@@ -41,7 +41,10 @@ dependencies:
   cloud_firestore: ^4.15.3
   flutter_riverpod: ^2.4.10
   image_picker: ^1.0.7
-
+  firebase_storage: ^11.6.5
+  
+  json_model:
+  json_annotation: ^4.8.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -52,6 +55,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
+  build_runner: ^2.4.8
+  json_serializable: ^6.7.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
