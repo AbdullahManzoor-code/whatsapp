@@ -99,15 +99,15 @@ class Authrepository {
   }
 
   Future<Usermodel?> getcurrentuser() async {
-    var user = await firestore
-        .collection('users')
-        .doc(auth.currentUser as String)
-        .get();
-    print(user);
     Usermodel? User;
+
+    var user =
+        await firestore.collection('users').doc(auth.currentUser?.uid).get();
+    print(user);
     if (user.data() != null) {
       User = Usermodel.fromJson(user.data()!);
     }
+
     return User;
   }
 }

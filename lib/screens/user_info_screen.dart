@@ -18,6 +18,11 @@ class _UserinfoState extends ConsumerState<Userinfo> {
   File? image;
   TextEditingController nameeditingcontrolor = TextEditingController();
   @override
+  void dispose() {
+    nameeditingcontrolor.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     selectim() async {
       image = await pickimage(context);
@@ -66,6 +71,7 @@ class _UserinfoState extends ConsumerState<Userinfo> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: TextField(
+                controller: nameeditingcontrolor,
                 decoration: InputDecoration(
                     hintText: "Enter your name ",
                     suffixIcon: IconButton(

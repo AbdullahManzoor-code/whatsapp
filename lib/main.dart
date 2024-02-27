@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/features/common/widget/utilis/loader.dart';
+// import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 import 'package:whatsapp/features/landing_screen.dart';
 import 'package:whatsapp/repository/auth_repository.dart';
 import 'package:whatsapp/repository/controler.dart';
@@ -32,21 +33,24 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: backgroundColor, primaryColor: appBarColor),
       title: 'Whatsapp',
-      home: ref.watch(userdatauthprovider).when(
-          data: (user) {
-            if (user == null) {
-              return const LandingScreen();
-            } else {
-              return const moblielayout();
-            }
-          },
-          error: (error, stackTrace) {
-            return ErrorScreen(
-              errorMessage: error.toString(),
-              onRetry: () {},
-            );
-          },
-          loading: () => const loader()),
+      home: const moblielayout(),
+      //  ref.watch(userdatauthprovider).when(
+      //     data: (user) {
+      //       if (user == null) {
+      //         return const LandingScreen();
+      //       } else {
+      //         return const moblielayout();
+      //       }
+      //     },
+      //     error: (error, stackTrace) {
+      //       return ErrorScreen(
+      //         errorMessage: "can't loading ",
+      //         onRetry: () {
+      //           // Navigator.pushNamedun(context, LandingScreen.id);
+      //         },
+      //       );
+      //     },
+      //     loading: () => const loader()),
       // const responvielayout(
       //     moblielayout: moblielayout(), weblayout: weblayout()),
       routes: {

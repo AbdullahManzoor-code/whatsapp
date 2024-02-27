@@ -19,6 +19,12 @@ final phonenumbercontroller = TextEditingController();
 
 class _LoginscreenState extends ConsumerState<Loginscreen> {
   @override
+  void dispose() {
+    // TODO: implement dispose
+    phonenumbercontroller.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
