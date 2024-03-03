@@ -73,6 +73,7 @@ class Authrepository {
       String uid = auth.currentUser!.uid;
       String photourl = info[0]['profilePic'].toString();
 
+      // ignore: unnecessary_null_comparison
       if (photourl != null) {
         photourl = await ref
             .read(Commonstorefiletofirebaseprovider)

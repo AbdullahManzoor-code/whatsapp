@@ -45,6 +45,7 @@ dependencies:
   
   json_model:
   json_annotation: ^4.8.1
+  flutter_contacts: ^1.1.7+1
 dev_dependencies:
   flutter_test:
     sdk: flutter

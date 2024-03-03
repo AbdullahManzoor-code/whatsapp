@@ -3,15 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 // import 'package:whatsapp/features/common/widget/utilis/loader.dart';
+// import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 import 'package:whatsapp/features/landing_screen.dart';
 import 'package:whatsapp/repository/auth_repository.dart';
 import 'package:whatsapp/repository/controler.dart';
+// import 'package:whatsapp/repository/controler.dart';
 import 'package:whatsapp/screens/OTP_Screen.dart';
 import 'package:whatsapp/screens/errorscreen.dart';
+// import 'package:whatsapp/screens/errorscreen.dart';
 import 'package:whatsapp/screens/login_Screen.dart';
 import 'package:whatsapp/screens/mobliechat_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:whatsapp/screens/moblielayout.dart';
+import 'package:whatsapp/screens/select_contact_screen.dart';
 import 'package:whatsapp/screens/user_info_screen.dart';
 import 'firebase_options.dart';
 
@@ -33,34 +37,35 @@ class MyApp extends ConsumerWidget {
       theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: backgroundColor, primaryColor: appBarColor),
       title: 'Whatsapp',
-      home: const moblielayout(),
-      //  ref.watch(userdatauthprovider).when(
-      //     data: (user) {
-      //       if (user == null) {
-      //         return const LandingScreen();
-      //       } else {
-      //         return const moblielayout();
-      //       }
-      //     },
-      //     error: (error, stackTrace) {
-      //       return ErrorScreen(
-      //         errorMessage: "can't loading ",
-      //         onRetry: () {
-      //           // Navigator.pushNamedun(context, LandingScreen.id);
-      //         },
-      //       );
-      //     },
-      //     loading: () => const loader()),
-      // const responvielayout(
-      //     moblielayout: moblielayout(), weblayout: weblayout()),
+      home: ref.watch(userdatauthprovider).when(
+            data: (user) {
+              if (user == null) {
+                return const LandingScreen();
+              } else {
+                return const moblielayout();
+              }
+            },
+            error: (error, stackTrace) {
+              return ErrorScreen(
+                errorMessage: "can't loading ",
+                onRetry: () {
+                  // Navigator.pushNamedun(context, LandingScreen.id);
+                },
+              );
+            },
+            loading: () => loader(),
+          ),
       routes: {
+        selectcontactlist.id: (context) => selectcontactlist(),
         LandingScreen.id: (context) => const LandingScreen(),
         MoblieChatScreen.id: (context) => const MoblieChatScreen(),
         Loginscreen.id: (context) => const Loginscreen(),
         OTPScreen.id: (context) => OTPScreen(
               verificationid: ref.read(verificationprovider),
             ),
-        Userinfo.id: (context) => const Userinfo()
+        Userinfo.id: (context) => const Userinfo(),
+        ErrorScreen.id: (context) =>
+            ErrorScreen(errorMessage: "errorMessage", onRetry: () {})
       },
     );
   }

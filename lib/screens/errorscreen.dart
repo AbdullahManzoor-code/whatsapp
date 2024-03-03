@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ErrorScreen extends StatelessWidget {
+  static String id = "errorscreen";
   final String errorMessage;
   final VoidCallback? onRetry;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
+import 'package:whatsapp/screens/select_contact_screen.dart';
 import 'package:whatsapp/widgets/contactslist.dart';
 
 // ignore: camel_case_types
@@ -42,7 +43,9 @@ class moblielayout extends StatelessWidget {
           ),
           body: const contactslist(),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, selectcontactlist.id);
+            },
             backgroundColor: tabColor,
             child: const Icon(
               Icons.comment,
