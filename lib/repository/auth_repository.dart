@@ -84,7 +84,7 @@ class Authrepository {
           userid: uid,
           profileurl: photourl,
           online: true,
-          phonenumber: auth.currentUser!.uid,
+          phonenumber: auth.currentUser!.phoneNumber!,
           groupid: []);
 
       firestore.collection('users').doc(uid).set(user.toJson());
@@ -104,7 +104,7 @@ class Authrepository {
 
     var user =
         await firestore.collection('users').doc(auth.currentUser?.uid).get();
-    print(user);
+
     if (user.data() != null) {
       User = Usermodel.fromJson(user.data()!);
     }

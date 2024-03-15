@@ -50,7 +50,7 @@ class DefaultFirebaseOptions {
     projectId: 'whatsapp-50f9f',
     authDomain: 'whatsapp-50f9f.firebaseapp.com',
     storageBucket: 'whatsapp-50f9f.appspot.com',
-    measurementId: 'G-71DCP123FW',
+    measurementId: 'G-QPG183FE7E',
   );
 
   static const FirebaseOptions android = FirebaseOptions(

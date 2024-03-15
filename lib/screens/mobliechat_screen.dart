@@ -6,12 +6,26 @@ import 'package:whatsapp/widgets/chatlist.dart';
 // ignore: camel_case_types
 class MoblieChatScreen extends StatelessWidget {
   static String id = "/mobliechat_screen";
+
   const MoblieChatScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+    final name = args['name'];
+    final uid = args['uid'];
     return Scaffold(
       appBar: AppBar(
+        leading: Row(
+          children: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back_ios_new_sharp))
+          ],
+        ),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.video_call)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
@@ -28,9 +42,8 @@ class MoblieChatScreen extends StatelessWidget {
               width: 15,
             ),
             Text(
-              info[0]["name"].toString(),
-              style:
-                  TextStyle(fontSize: MediaQuery.of(context).size.width * 0.03),
+              name.jsify(),
+              style: TextStyle(fontSize: Checkbox.width),
             ),
           ],
         ),

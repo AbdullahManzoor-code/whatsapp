@@ -6,7 +6,7 @@ import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 import 'package:whatsapp/features/select_contacts/controller/select_contact_contorller.dart';
 import 'package:whatsapp/screens/errorscreen.dart';
 
-class selectcontactlist extends ConsumerWidget {
+class Selectcontactlist extends ConsumerWidget {
   static String id = "select_contact_screen";
   void selectcontact(
       WidgetRef ref, Contact selectedcontact, BuildContext context) {
@@ -21,11 +21,11 @@ class selectcontactlist extends ConsumerWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: appBarColor,
-          title: Text("Select Contacts"),
+          title: const Text("Select Contacts"),
           actions: [
             Row(
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.search))
+                IconButton(onPressed: () {}, icon: const Icon(Icons.search))
               ],
             )
           ],
@@ -40,7 +40,7 @@ class selectcontactlist extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListTile(
-                        leading: CircleAvatar(
+                        leading: const CircleAvatar(
                             // child: Image.network(
                             //     contactlists[index].photo.toString()),
                             ),
@@ -52,8 +52,9 @@ class selectcontactlist extends ConsumerWidget {
               ),
               error: (error, stackTrace) {
                 Navigator.pushNamed(context, ErrorScreen.id);
+                return null;
               },
-              loading: () => loader(),
+              loading: () => const loader(),
             ));
   }
 }
