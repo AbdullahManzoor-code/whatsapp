@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
-import 'package:whatsapp/widgets/chatlist.dart';
-import 'package:whatsapp/widgets/contactslist.dart';
+import 'package:whatsapp/features/chat/widget/chatlist.dart';
+import 'package:whatsapp/features/chat/widget/contactslist.dart';
 import 'package:whatsapp/widgets/web_profile_bar.dart';
 import 'package:whatsapp/widgets/webchat_appbar.dart';
 import 'package:whatsapp/widgets/websearch_bar.dart';
@@ -21,7 +21,7 @@ class weblayout extends StatelessWidget {
                 children: [
                   webprofile(),
                   websearchbar(),
-                  contactslist(),
+                  ContactsList(),
                 ],
               ),
             ),

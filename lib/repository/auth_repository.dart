@@ -12,11 +12,9 @@ import 'package:whatsapp/screens/OTP_Screen.dart';
 import 'package:whatsapp/screens/moblielayout.dart';
 import 'package:whatsapp/screens/user_info_screen.dart';
 
-String verificationid = '';
 // ignore: non_constant_identifier_names
 final Authrepositerprovider = Provider((ref) => Authrepository(
     auth: FirebaseAuth.instance, firestore: FirebaseFirestore.instance));
-final verificationprovider = Provider((ref) => verificationid);
 
 class Authrepository {
   Authrepository({
@@ -41,7 +39,6 @@ class Authrepository {
         showsnackbar(context, error);
       },
       codeSent: (verificationId, forceResendingToken) async {
-        verificationid = verificationId;
         Navigator.pushNamed(context, OTPScreen.id, arguments: verificationId);
         // print("object&&&&&&&&&&&&&&&&&&&&&&&&7");
       },
@@ -110,5 +107,13 @@ class Authrepository {
     }
 
     return User;
+  }
+
+  Stream<Usermodel> getdataofuserafterauth(String uid) {
+    return firestore
+        .collection('users')
+        .doc(uid)
+        .snapshots()
+        .map((event) => Usermodel.fromJson(event.data()!));
   }
 }

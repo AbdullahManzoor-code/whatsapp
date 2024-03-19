@@ -18,6 +18,7 @@ class Usermodel {
   final bool online;
   final String phonenumber;
   final List<String> groupid;
-  factory Usermodel.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  factory Usermodel.fromJson(Map<String, dynamic> json) =>
+      _$UsermodelFromJson(json);
+  Map<String, dynamic> toJson() => _$UsermodelToJson(this);
 }

@@ -44,4 +44,8 @@ class Authcontroller {
 
     return user;
   }
+
+  Stream<Usermodel> getdatafromuid(String uid) {
+    return authrepository.getdataofuserafterauth(uid);
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/colors.dart';
@@ -6,10 +7,11 @@ import 'package:whatsapp/repository/controler.dart';
 class OTPScreen extends ConsumerWidget {
   static String id = "/OTP_Screen";
 
-  final String verificationid;
-  const OTPScreen({super.key, required this.verificationid});
   @override
   Widget build(BuildContext context, ref) {
+    final String verificationid =
+        ModalRoute.of(context)?.settings.arguments as String;
+
     verifyOTP(BuildContext context, String userOTP, WidgetRef ref) {
       ref
           .read(Authcontrollerprovder)

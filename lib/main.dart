@@ -12,7 +12,7 @@ import 'package:whatsapp/screens/OTP_Screen.dart';
 import 'package:whatsapp/screens/errorscreen.dart';
 // import 'package:whatsapp/screens/errorscreen.dart';
 import 'package:whatsapp/screens/login_Screen.dart';
-import 'package:whatsapp/screens/mobliechat_screen.dart';
+import 'package:whatsapp/features/chat/mobliechat_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:whatsapp/screens/moblielayout.dart';
 import 'package:whatsapp/screens/select_contact_screen.dart';
@@ -60,12 +60,13 @@ class MyApp extends ConsumerWidget {
         LandingScreen.id: (context) => const LandingScreen(),
         MoblieChatScreen.id: (context) => const MoblieChatScreen(),
         Loginscreen.id: (context) => const Loginscreen(),
-        OTPScreen.id: (context) => OTPScreen(
-              verificationid: ref.read(verificationprovider),
-            ),
+        OTPScreen.id: (context) => OTPScreen(),
         Userinfo.id: (context) => const Userinfo(),
-        ErrorScreen.id: (context) =>
-            ErrorScreen(errorMessage: "errorMessage", onRetry: () {})
+        ErrorScreen.id: (context) => ErrorScreen(
+            errorMessage: "errorMessage",
+            onRetry: () {
+              Navigator.pushNamed(context, LandingScreen.id);
+            })
       },
     );
   }

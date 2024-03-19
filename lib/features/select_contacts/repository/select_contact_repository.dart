@@ -4,7 +4,7 @@ import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/features/common/widget/utilis/error.dart';
 import 'package:whatsapp/models/user_model.dart';
-import 'package:whatsapp/screens/mobliechat_screen.dart';
+import 'package:whatsapp/features/chat/mobliechat_screen.dart';
 
 final getcontactsproviderrepostry = Provider(
     (ref) => Selectcontactsrepository(firebase: FirebaseFirestore.instance));

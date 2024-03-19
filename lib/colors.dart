@@ -15,25 +15,10 @@ const chatBarMessage = Color.fromRGBO(30, 36, 40, 1);
 const mobileChatBoxColor = Color.fromRGBO(31, 44, 52, 1);
 
 InputDecoration inputdeco = InputDecoration(
+  border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
   filled: true,
   contentPadding: const EdgeInsets.all(10),
   fillColor: searchBarColor,
   hintText: "start new chat or search",
   hintStyle: const TextStyle(fontSize: 15),
-  border: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    borderSide: const BorderSide(color: Colors.grey),
-  ),
-  focusedBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    borderSide: const BorderSide(color: Colors.grey),
-  ),
-  disabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    borderSide: const BorderSide(color: Colors.grey),
-  ),
-  enabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    borderSide: const BorderSide(color: Colors.grey),
-  ),
 );
