@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/features/chat/controller/chat_controller.dart';
+import 'package:whatsapp/features/common/enums/msg_enum.dart';
+import 'package:whatsapp/features/common/widget/utilis/fliepicker.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Chat_bottom_W extends ConsumerStatefulWidget {
   Chat_bottom_W({
@@ -14,17 +19,34 @@ class Chat_bottom_W extends ConsumerStatefulWidget {
 }
 
 bool isshowR = false;
-var text;
+String text = "";
 
 class _Chat_bottom_WState extends ConsumerState<Chat_bottom_W> {
   late TextEditingController textcontroller;
   void sendtextmsg() {
-    if (isshowR) {
+    if (isshowR & text.isNotEmpty) {
       ref
           .watch(chatcontrollerprovider)
-          .sendtextmsg(context, widget.receiverid, text);
+          .sendtextmsg(context, widget.receiverid, text.trim());
       textcontroller.clear();
+      text = "";
     }
+  }
+
+  void sendimage() async {
+    File? image = await pickimagefromgellray(context);
+    if (image != null) {
+      sendfile(file: image, messagetype: Messagetype.image);
+    }
+  }
+
+  void sendfile({required File file, required Messagetype messagetype}) {
+    ref.read(chatcontrollerprovider).sendfilemessage(
+          context: context,
+          file: file,
+          messagetype: messagetype,
+          recevierId: widget.receiverid,
+        );
   }
 
   @override
@@ -85,7 +107,8 @@ class _Chat_bottom_WState extends ConsumerState<Chat_bottom_W> {
                               onPressed: () {},
                               icon: const Icon(Icons.attach_file)),
                           IconButton(
-                              onPressed: () {}, icon: const Icon(Icons.camera))
+                              onPressed: sendimage,
+                              icon: const Icon(Icons.camera))
                         ],
                       ),
                     ),

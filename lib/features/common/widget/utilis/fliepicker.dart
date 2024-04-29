@@ -5,7 +5,7 @@ import 'dart:io';
 
 import 'package:whatsapp/features/common/widget/utilis/error.dart';
 
-Future<File?> pickimage(BuildContext context) async {
+Future<File?> pickimagefromgellray(BuildContext context) async {
   File? image;
 
   try {

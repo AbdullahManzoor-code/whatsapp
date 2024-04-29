@@ -48,4 +48,8 @@ class Authcontroller {
   Stream<Usermodel> getdatafromuid(String uid) {
     return authrepository.getdataofuserafterauth(uid);
   }
+
+  void Setuserstate(bool isonline) {
+    authrepository.Setuserstate(isonline);
+  }
 }

@@ -5,7 +5,6 @@ import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 // import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 // import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 import 'package:whatsapp/features/landing_screen.dart';
-import 'package:whatsapp/repository/auth_repository.dart';
 import 'package:whatsapp/repository/controler.dart';
 // import 'package:whatsapp/repository/controler.dart';
 import 'package:whatsapp/screens/OTP_Screen.dart';

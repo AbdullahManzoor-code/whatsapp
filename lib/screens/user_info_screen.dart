@@ -25,7 +25,7 @@ class _UserinfoState extends ConsumerState<Userinfo> {
 
   Widget build(BuildContext context) {
     selectim() async {
-      image = await pickimage(context);
+      image = await pickimagefromgellray(context);
       setState(() {});
     }
 

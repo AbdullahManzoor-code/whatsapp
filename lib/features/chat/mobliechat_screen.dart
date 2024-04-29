@@ -9,28 +9,38 @@ import 'package:whatsapp/features/chat/widget/chatlist.dart';
 import 'widget/chat_bottom_w.dart';
 
 // ignore: camel_case_types
-class MoblieChatScreen extends ConsumerWidget {
+class MoblieChatScreen extends ConsumerStatefulWidget {
   static String id = "/mobliechat_screen";
 
   const MoblieChatScreen({Key? key});
 
   @override
-  Widget build(BuildContext context, ref) {
+  ConsumerState<MoblieChatScreen> createState() => _MoblieChatScreenState();
+}
+
+class _MoblieChatScreenState extends ConsumerState<MoblieChatScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
+  Widget build(
+    BuildContext context,
+  ) {
     final args =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final name = args['name'];
     final uid = args['uid'];
     return Scaffold(
       appBar: AppBar(
-        leading: Row(
-          children: [
-            IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.arrow_back_ios_new_sharp))
-          ],
-        ),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.video_call)),
           IconButton(onPressed: () {}, icon: const Icon(Icons.call)),
@@ -38,7 +48,7 @@ class MoblieChatScreen extends ConsumerWidget {
         ],
         backgroundColor: appBarColor,
         title: StreamBuilder(
-            stream: ref.read(Authcontrollerprovder).getdatafromuid(uid),
+            stream: ref.watch(Authcontrollerprovder).getdatafromuid(uid),
             builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const loader();
@@ -76,7 +86,7 @@ class MoblieChatScreen extends ConsumerWidget {
           )),
           child: Column(
             children: [
-              const Expanded(child: chatlist()),
+              Expanded(child: chatlist(receiverid: uid)),
               Chat_bottom_W(
                 receiverid: uid,
               ),

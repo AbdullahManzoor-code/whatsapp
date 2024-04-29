@@ -45,7 +45,7 @@ class mymessagecard extends StatelessWidget {
                         width: 5,
                       ),
                       Text(
-                        time,
+                        time.toString(),
                         style: const TextStyle(fontSize: 10),
                       ),
                     ],

@@ -1,11 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:whatsapp/colors.dart';
+import 'package:whatsapp/repository/auth_repository.dart';
 import 'package:whatsapp/screens/select_contact_screen.dart';
 import 'package:whatsapp/features/chat/widget/contactslist.dart';
 
 // ignore: camel_case_types
-class moblielayout extends StatelessWidget {
+class moblielayout extends ConsumerStatefulWidget {
   const moblielayout({super.key});
+
+  @override
+  ConsumerState<moblielayout> createState() => _moblielayoutState();
+}
+
+class _moblielayoutState extends ConsumerState<moblielayout>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    WidgetsBinding.instance.removeObserver(this);
+
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state case AppLifecycleState.resumed) {
+      ref.read(Authrepositerprovider).Setuserstate(true);
+    } else {
+      ref.read(Authrepositerprovider).Setuserstate(false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
