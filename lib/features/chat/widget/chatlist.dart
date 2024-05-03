@@ -30,9 +30,11 @@ class chatlist extends ConsumerWidget {
                       : false;
 
               return mymessagecard(
-                  isme: bool.parse(isme.toString()),
-                  message: msg.text,
-                  time: "${msg.timesent.hour}:${msg.timesent.minute}");
+                isme: bool.parse(isme.toString()),
+                message: msg.text,
+                time: "${msg.timesent.hour}:${msg.timesent.minute}",
+                messagetype: msg.type,
+              );
             },
             itemCount: snapshot.data!.length,
           );

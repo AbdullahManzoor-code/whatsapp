@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +7,6 @@ import 'package:whatsapp/features/chat/repository/chat_repository.dart';
 import 'package:whatsapp/features/chat/widget/chat_contact_info.dart';
 import 'package:whatsapp/features/chat/widget/message.dart';
 import 'package:whatsapp/features/common/enums/msg_enum.dart';
-import 'package:whatsapp/models/user_model.dart';
 import 'package:whatsapp/repository/controler.dart';
 
 final chatcontrollerprovider = Provider((ref) {
@@ -33,13 +31,18 @@ class chatcontroller {
     return chatrepository.getmessages(receiverid);
   }
 
-  sendtextmsg(BuildContext context, reciverid, String text) {
+  sendtextmsg(
+      {required BuildContext context,
+      required String reciverid,
+      required String text,
+      Messagetype type = Messagetype.text}) {
     ref.read(userdatauthprovider).whenData((value) =>
         chatrepository.sendtextmsg(
             context: context,
             reciverid: reciverid,
             sender: value!,
-            text: text));
+            text: text,
+            type: type));
   }
 
   void sendfilemessage({

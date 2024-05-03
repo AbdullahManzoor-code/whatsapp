@@ -1,7 +1,7 @@
 enum Messagetype {
   text('text'),
   audio('audio'),
-  vedio('vedio'),
+  vedio('video'),
   gif('gif'),
   image('image');
 

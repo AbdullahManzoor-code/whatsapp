@@ -24,12 +24,13 @@ class Chatrepository {
   FirebaseFirestore firestore;
 
   FirebaseAuth auth;
-
+//for text messsages
   void sendtextmsg(
       {required BuildContext context,
       required String reciverid,
       required Usermodel sender,
-      required String text}) async {
+      required String text,
+      Messagetype type = Messagetype.text}) async {
     try {
       var time = DateTime.now();
       Usermodel receiver;
@@ -40,7 +41,7 @@ class Chatrepository {
       _savechatscreendatatosubcollection(
           receiver, reciverid, sender, time, text);
       _savemsgtosubcollection(
-          type: Messagetype.text,
+          type: type,
           text: text,
           messageid: messageid as String,
           senderid: sender.userid,
@@ -51,6 +52,7 @@ class Chatrepository {
     }
   }
 
+// for contactlist on whatsapp start screen
   _savemsgtosubcollection({
     required Messagetype type,
     required String text,
@@ -61,7 +63,7 @@ class Chatrepository {
   }) async {
     try {
       final msg = Message(
-          type: Messagetype.text,
+          type: type,
           text: text,
           messageid: messageid,
           senderid: auth.currentUser!.uid,
@@ -90,6 +92,7 @@ class Chatrepository {
     }
   }
 
+//  overall chatdata
   _savechatscreendatatosubcollection(Usermodel receiver, String reciverid,
       Usermodel sender, DateTime time, msg) async {
     try {
@@ -122,6 +125,7 @@ class Chatrepository {
     }
   }
 
+// find new contact on appp
   Stream<List<Chatcontactinfo>> getconctedcontacts() {
     return firestore
         .collection('users')
@@ -149,6 +153,7 @@ class Chatrepository {
     });
   }
 
+// getmesages from firebase
   Stream<List<Message>> getmessages(String receiverid) {
     return firestore
         .collection("users")
@@ -167,6 +172,7 @@ class Chatrepository {
     });
   }
 
+// sendfile
   void sendfilemessage(
       {required Ref ref,
       required BuildContext context,
@@ -180,21 +186,21 @@ class Chatrepository {
         .read(Commonstorefiletofirebaseprovider)
         .storetofirebase(file,
             'chats/${messagetype.type}/${senderdata.userid}/$recevierId/$messageid');
-    var text;
+    var type;
     switch (messagetype) {
       case Messagetype.audio:
-        text = "🔉audio";
+        type = "🔉audio";
         break;
       case Messagetype.vedio:
-        text = "📽 video";
+        type = "📽 video";
         break;
 
       case Messagetype.gif:
-        text = "Gif";
+        type = "gif";
         break;
 
       case Messagetype.image:
-        text = "📸 Image";
+        type = "📸 Image";
         break;
 
       case Messagetype.text:
@@ -212,6 +218,6 @@ class Chatrepository {
         await firestore.collection("users").doc(recevierId).get();
     Usermodel recevier = Usermodel.fromJson(recevierdata.data()!);
     _savechatscreendatatosubcollection(
-        recevier, recevierId, senderdata, time, file);
+        recevier, recevierId, senderdata, time, type);
   }
 }
