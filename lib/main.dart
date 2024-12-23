@@ -6,8 +6,11 @@ import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 // import 'package:whatsapp/features/common/widget/utilis/loader.dart';
 import 'package:whatsapp/features/landing_screen.dart';
 import 'package:whatsapp/repository/controler.dart';
+import 'package:whatsapp/screens/Forget.dart';
+import 'package:whatsapp/screens/Login.dart';
 // import 'package:whatsapp/repository/controler.dart';
 import 'package:whatsapp/screens/OTP_Screen.dart';
+import 'package:whatsapp/screens/Signup.dart';
 import 'package:whatsapp/screens/errorscreen.dart';
 // import 'package:whatsapp/screens/errorscreen.dart';
 import 'package:whatsapp/screens/login_Screen.dart';
@@ -65,7 +68,10 @@ class MyApp extends ConsumerWidget {
             errorMessage: "errorMessage",
             onRetry: () {
               Navigator.pushNamed(context, LandingScreen.id);
-            })
+            }),
+            Login.id:(context)=>Login(),
+            Signup.id:(context)=>Signup(),
+            Forget.id:(context)=>Forget(),
       },
     );
   }

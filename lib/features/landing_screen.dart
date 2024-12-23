@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
+import 'package:whatsapp/screens/Login.dart';
 import 'package:whatsapp/screens/login_Screen.dart';
 
 import 'common/widget/custombutton.dart';
@@ -52,7 +53,7 @@ class LandingScreen extends StatelessWidget {
                 title: "AGREE AND CONTINUE",
                 height: size.height * 0.08,
                 todo: () {
-                  Navigator.pushNamed(context, Loginscreen.id);
+                  Navigator.pushNamed(context, Login.id);
                 },
               ))
         ],
